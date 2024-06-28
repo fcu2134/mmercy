@@ -23,7 +23,7 @@ namespace MercDevs_ej2.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ficha_tecnica(int? id)
+        public async Task<IActionResult> FichaTecnica(int? id)
         {
             if (id == null)
             {
