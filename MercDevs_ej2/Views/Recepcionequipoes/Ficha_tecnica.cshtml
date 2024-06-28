@@ -1,0 +1,144 @@
+﻿@model MercDevs_ej2.Models.Recepcionequipo
+
+@{
+    ViewData["Title"] = "Ficha Técnica";
+}
+
+<div class="container">
+    <h1>Ficha Técnica</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>ID: @Model.Id</h3>
+            <p>Fecha: @Model.Fecha</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Datos del Usuario</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Nombre</th>
+                    <td>@Model.IdClienteNavigation.Nombre</td>
+                </tr>
+                <tr>
+                    <th>Apellido</th>
+                    <td>@Model.IdClienteNavigation.Apellido</td>
+                </tr>
+                <tr>
+                    <th>Celular</th>
+                    <td>@Model.IdClienteNavigation.Telefono</td>
+                </tr>
+                <tr>
+                    <th>Correo</th>
+                    <td>@Model.IdClienteNavigation.Correo</td>
+                </tr>
+                <tr>
+                    <th>Dirección</th>
+                    <td>@Model.IdClienteNavigation.Direccion</td>
+                </tr>
+            </table>
+
+            <h3>Observación del Usuario</h3>
+            <ul>
+                <li>No Descripción Check 1</li>
+                <li>No Descripción Check 2</li>
+                <li>No Descripción Check 3</li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Datos del Hardware</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Tipo de PC</th>
+                    <td>@Model.TipoPc</td>
+                </tr>
+                <tr>
+                    <th>Accesorios</th>
+                    <td>
+                        @Model.Accesorio
+                    </td>
+                </tr>
+                <tr>
+                    <th>Marca</th>
+                    <td>@Model.MarcaPc</td>
+                </tr>
+                <tr>
+                    <th>Modelo</th>
+                    <td>@Model.ModeloPc</td>
+                </tr>
+                <tr>
+                    <th>N° Serie</th>
+                    <td>@Model.Nserie</td>
+                </tr>
+                <tr>
+                    <th>CPU</th>
+                    <td>
+                        @Model.TipoPc == 1
+                        
+                            <span>Intel</span>
+
+                            <br />
+                            <span>AMD</span>
+                            <br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Variante</th>
+                    <td>a</td>
+                </tr>
+                <tr>
+                    <th>RAM (GB)</th>
+                    <td>@Model.CapacidadRam</td>
+                </tr>
+                <tr>
+                    <th>Tipo Almacenamiento</th>
+                    <td>@Model.TipoAlmacenamiento</td>
+                </tr>
+                <tr>
+                    <th>Capacidad Almacenamiento</th>
+                    <td>@Model.CapacidadAlmacenamiento</td>
+                </tr>
+                <tr>
+                    <th>Tipo GPU</th>
+                    <td>@Model.TipoGpu</td>
+                </tr>
+                <tr>
+                    <th>Tarjeta Gráfica</th>
+                    <td>@Model.Grafico</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Almacenamiento</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>HDD</th>
+                    <td>@Model.CapacidadAlmacenamiento</td>
+                </tr>
+                <tr>
+                    <th>SSD</th>
+                    <td>@Model.CapacidadAlmacenamiento</td>
+                </tr>
+                <tr>
+                    <th>Capacidad</th>
+                    <td>@Model.CapacidadAlmacenamiento</td>
+                </tr>
+                <tr>
+                    <th>GPU</th>
+                    <td>@Model.TipoGpu</td>
+                </tr>
+                <tr>
+                    <th>Tarjeta</th>
+                    <td>@Model.Grafico</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</div>
