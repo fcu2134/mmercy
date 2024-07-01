@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MercDevs_ej2.Models;
 using Microsoft.CodeAnalysis;
 using System;
-using AspNetCore;
+
 
 
 
@@ -30,16 +30,22 @@ namespace MercDevs_ej2.Controllers
                 return NotFound();
             }
 
-            var Ficha_tecnica = await _context.Recepcionequipos
+            var ficha_tecnica = await _context.Recepcionequipos
                 .Include(r => r.IdClienteNavigation)
                 .Include(r => r.IdServicioNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-           
-            return View(Ficha_tecnica); 
+            if (ficha_tecnica == null)
+            {
+                return NotFound();
+            }
+
+            return View(ficha_tecnica);
+        
         }
 
 
+                
 
 
         public async Task<IActionResult> Recepcion_equipos_cliente(int? id)
@@ -50,17 +56,17 @@ namespace MercDevs_ej2.Controllers
             }
 
             var recepcionEquipo = _context.Recepcionequipos
-               
+
                 .Include(r => r.IdServicioNavigation)
                 .Where(u => u.IdCliente == id);
 
             return View(await recepcionEquipo.ToListAsync());
         }
-        
+
 
         public async Task<IActionResult> RecepcionCompletada(int? id)
         {
-            if ( id ==0)
+            if (id == 0)
             {
                 return NotFound();
             }
@@ -70,8 +76,8 @@ namespace MercDevs_ej2.Controllers
             {
                 return NotFound();
             }
-                
-            
+
+
             try
             {
 
@@ -129,13 +135,13 @@ namespace MercDevs_ej2.Controllers
         }
 
 
-            // GET: Recepcionequipoes
-            public async Task<IActionResult> Index()
+        // GET: Recepcionequipoes
+        public async Task<IActionResult> Index()
         {
             var mercydevsEjercicio2Context = _context.Recepcionequipos.Include(r => r.IdClienteNavigation).Include(r => r.IdServicioNavigation);
             return View(await mercydevsEjercicio2Context.ToListAsync());
         }
-        
+
         // GET: Recepcionequipoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -1,0 +1,55 @@
+métodos para hacer cambio de datos, todavía estoy entendiendo como hacer que funcione pero algo e algo 
+
+
+ <td>@ConvertirTipoPc(Model.TipoPc)</td>
+
+ <td>@ConvertirCapacidadRam(Model.CapacidadRam)</td>
+ <td>@ConvertirTipoAlmacenamiento(Model.TipoAlmacenamiento)</td>
+<td>@ConvertirTipoGpu(Model.TipoGpu)</td>
+ @functions {
+     private string ConvertirTipoPc(int? tipoPc)
+     {
+         return tipoPc switch
+         {
+             0 => "PC Torre",
+             1 => "Notebook",
+             2 => "All-In-ONE",
+             _ => "Desconocido"
+         };
+     }
+
+     private string ConvertirCapacidadRam(int? capacidadRam)
+     {
+         return capacidadRam switch
+         {
+             0 => "4 GB",
+             1 => "6 GB",
+             2 => "8 GB",
+             3 => "12 GB",
+             4 => "Otra",
+             _ => "Desconocido"
+         };
+     }
+
+     private string ConvertirTipoAlmacenamiento(int? tipoAlmacenamiento)
+     {
+         return tipoAlmacenamiento switch
+         {
+             0 => "HDD",
+             1 => "SSD Sata",
+             2 => "SSD M.2",
+             3 => "SSD NVM M.2",
+             _ => "Desconocido"
+         };
+     }
+
+     private string ConvertirTipoGpu(int? tipoGpu)
+     {
+         return tipoGpu switch
+         {
+             0 => "Chip Integrado",
+             1 => "Tarjeta",
+             _ => "Desconocido"
+         };
+     }
+ }

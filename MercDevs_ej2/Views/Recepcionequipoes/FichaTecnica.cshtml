@@ -4,141 +4,141 @@
     ViewData["Title"] = "Ficha Técnica";
 }
 
-<div class="container">
-    <h1>Ficha Técnica</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .body1 {
+            margin: 20px; /* Ajusta el margen alrededor del cuerpo */
+            background-color: #f0f0f0; /* Color de fondo del cuerpo */
+        }
 
-    <div class="row">
-        <div class="col-md-6">
-            <h3>ID: @Model.Id</h3>
-            <p>Fecha: @Model.Fecha</p>
-        </div>
-    </div>
+        .container1 {
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background-color: #161616;
+            border-radius: 20px; 
+            color: white;
+            box-shadow: 0 0 120px rgba(255, 56, 56, 0.5); 
+        }
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3>Datos del Usuario</h3>
-            <table class="table table-striped">
-                <tr>
-                    <th>Nombre</th>
-                    <td>@Model.IdClienteNavigation.Nombre</td>
-                </tr>
-                <tr>
-                    <th>Apellido</th>
-                    <td>@Model.IdClienteNavigation.Apellido</td>
-                </tr>
-                <tr>
-                    <th>Celular</th>
-                    <td>@Model.IdClienteNavigation.Telefono</td>
-                </tr>
-                <tr>
-                    <th>Correo</th>
-                    <td>@Model.IdClienteNavigation.Correo</td>
-                </tr>
-                <tr>
-                    <th>Dirección</th>
-                    <td>@Model.IdClienteNavigation.Direccion</td>
-                </tr>
-            </table>
+    
 
-            <h3>Observación del Usuario</h3>
-            <ul>
-                <li>No Descripción Check 1</li>
-                <li>No Descripción Check 2</li>
-                <li>No Descripción Check 3</li>
-            </ul>
+        .table th, .table td {
+            padding: 8px; 
+            color: white; 
+        }
+
+    </style>
+</head>
+<body class="body1">
+    <div class="container1">
+        <div class="text-right mb-4">
+            <strong>ID:</strong> @Model.Id <br />
+            <strong>Fecha: @Model.Fecha</strong> 
         </div>
 
-        <div class="col-md-6">
-            <h3>Datos del Hardware</h3>
-            <table class="table table-striped">
-                <tr>
-                    <th>Tipo de PC</th>
-                    <td>@Model.TipoPc</td>
-                </tr>
-                <tr>
-                    <th>Accesorios</th>
-                    <td>
-                        @Model.Accesorio
-                    </td>
-                </tr>
-                <tr>
-                    <th>Marca</th>
-                    <td>@Model.MarcaPc</td>
-                </tr>
-                <tr>
-                    <th>Modelo</th>
-                    <td>@Model.ModeloPc</td>
-                </tr>
-                <tr>
-                    <th>N° Serie</th>
-                    <td>@Model.Nserie</td>
-                </tr>
-                <tr>
-                    <th>CPU</th>
-                    <td>
-                        @Model.TipoPc == 1
+        <h1 class="text-center mb-4">@ViewData["Title"]</h1>
 
-                        <span>Intel</span>
-
-                        <br />
-                        <span>AMD</span>
-                        <br />
-                    </td>
-                </tr>
-                <tr>
-                    <th>Variante</th>
-                    <td>a</td>
-                </tr>
-                <tr>
-                    <th>RAM (GB)</th>
-                    <td>@Model.CapacidadRam</td>
-                </tr>
-                <tr>
-                    <th>Tipo Almacenamiento</th>
-                    <td>@Model.TipoAlmacenamiento</td>
-                </tr>
-                <tr>
-                    <th>Capacidad Almacenamiento</th>
-                    <td>@Model.CapacidadAlmacenamiento</td>
-                </tr>
-                <tr>
-                    <th>Tipo GPU</th>
-                    <td>@Model.TipoGpu</td>
-                </tr>
-                <tr>
-                    <th>Tarjeta Gráfica</th>
-                    <td>@Model.Grafico</td>
-                </tr>
+        <div class="section">
+            <div class="section-title">Datos del Usuario</div>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>@Model.IdClienteNavigation.Nombre</td>
+                        <th>Apellido</th>
+                        <td>@Model.IdClienteNavigation.Apellido</td>
+                    </tr>
+                    <tr>
+                        <th>Celular</th>
+                        <td>@Model.IdClienteNavigation.Telefono</td>
+                        <th>Correo</th>
+                        <td>@Model.IdClienteNavigation.Correo</td>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <td colspan="3">@Model.IdClienteNavigation.Direccion</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
-    </div>
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3>Almacenamiento</h3>
-            <table class="table table-striped">
-                <tr>
-                    <th>HDD</th>
-                    <td>@Model.CapacidadAlmacenamiento</td>
-                </tr>
-                <tr>
-                    <th>SSD</th>
-                    <td>@Model.CapacidadAlmacenamiento</td>
-                </tr>
-                <tr>
-                    <th>Capacidad</th>
-                    <td>@Model.CapacidadAlmacenamiento</td>
-                </tr>
-                <tr>
-                    <th>GPU</th>
-                    <td>@Model.TipoGpu</td>
-                </tr>
-                <tr>
-                    <th>Tarjeta</th>
-                    <td>@Model.Grafico</td>
-                </tr>
+        <div class="section">
+            <div class="section-title">Observación del Usuario</div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Descripción</th>
+                        <th>Check</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
+
+        <div class="section">
+            <h2>Datos del Hardware</h2>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row">Tipo</th>
+                        <<td>@Model.TipoPc</td>
+                        <th scope="row">Accesorios</th>
+                        <td>@Model.Accesorio</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Marca</th>
+                        <td>@Model.MarcaPc</td>
+                        <th scope="row">Modelo</th>
+                        <td>@Model.ModeloPc</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">S/N</th>
+                        <td>@Model.Nserie</td>
+                        <th scope="row">CPU</th>
+                        <td>@Model.TipoGpu</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">RAM (GB)</th>
+                        <td>@Model.CapacidadRam</td>
+                       
+                        <th scope="row">Almacenamiento</th>
+                       <td>@Model.CapacidadAlmacenamiento</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tipo GPU</th>
+                        <td>@Model.TipoGpu</td>
+                        <th scope="row">Tarjeta Gráfica</th>
+                        <td>@Model.Grafico</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
-</div>
+   
+</body>
+</html>
+    
