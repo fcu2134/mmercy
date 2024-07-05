@@ -35,10 +35,7 @@ namespace MercDevs_ej2.Controllers
                 .Include(r => r.IdServicioNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (ficha_tecnica == null)
-            {
-                return NotFound();
-            }
+            
 
             return View(ficha_tecnica);
         
@@ -203,7 +200,7 @@ namespace MercDevs_ej2.Controllers
         { nameof(recepcionequipo.Grafico), recepcionequipo.Grafico }
     };
 
-            // Verificar si alguna de las propiedades es nula o en el caso de int, si es igual a 0
+            // Verificar si alguna de las propiedades es nula o en el caso de int, si es igual a 0s
             //quiero ver tambien si puedo validar una fecha, eso sera interesante :}
             //o quiza lo mejor sea agregar la fecha desde el sistema del pc, seria lo mas acertado 
             foreach (var dato in tablaDato)

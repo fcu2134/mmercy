@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         .body1 {
-            margin: 20px; /* Ajusta el margen alrededor del cuerpo */
-            background-color: #f0f0f0; /* Color de fondo del cuerpo */
+            margin: 20px; 
+            background-color: #f0f0f0;
+            margin-botton:20px;
         }
 
         .container1 {
@@ -103,9 +104,25 @@
             <h2>Datos del Hardware</h2>
             <table class="table table-bordered">
                 <tbody>
+
                     <tr>
                         <th scope="row">Tipo</th>
-                        <<td>@Model.TipoPc</td>
+
+                       
+                            @if(Model.TipoPc == 0)
+                            {
+                            <td>pc torre</td>
+                        }else if(Model.TipoPc == 1)
+                        {
+                           <td>notebook</td>
+                        }
+                        else if (Model.TipoPc == 2)
+                        {
+                            <td>All-in-One></td>
+                        }
+
+                    </tr>
+                     <tr>
                         <th scope="row">Accesorios</th>
                         <td>@Model.Accesorio</td>
                     </tr>
