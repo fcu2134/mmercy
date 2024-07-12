@@ -10,6 +10,13 @@ public partial class MercydevsEjercicio2Context : DbContext
     public MercydevsEjercicio2Context()
     {
     }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {    
+        if (!optionsBuilder.IsConfigured)
+    {
+            
+    }
+    
+    }
 
     public MercydevsEjercicio2Context(DbContextOptions<MercydevsEjercicio2Context> options)
         : base(options)
@@ -18,7 +25,11 @@ public partial class MercydevsEjercicio2Context : DbContext
 
     public virtual DbSet<Cliente> Clientes { get; set; }
 
+    public virtual DbSet<Datosfichatecnica> Datosfichatecnicas { get; set; }
+
     public virtual DbSet<Descripcionservicio> Descripcionservicios { get; set; }
+
+    public virtual DbSet<Diagnosticosolucion> Diagnosticosolucions { get; set; }
 
     public virtual DbSet<Recepcionequipo> Recepcionequipos { get; set; }
 
@@ -26,12 +37,7 @@ public partial class MercydevsEjercicio2Context : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-        }
-    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -53,6 +59,48 @@ public partial class MercydevsEjercicio2Context : DbContext
             entity.Property(e => e.Estado).HasColumnType("int(11)");
             entity.Property(e => e.Nombre).HasMaxLength(45);
             entity.Property(e => e.Telefono).HasMaxLength(45);
+        });
+
+        modelBuilder.Entity<Datosfichatecnica>(entity =>
+        {
+            entity.HasKey(e => e.IdDatosFichaTecnica).HasName("PRIMARY");
+
+            entity.ToTable("datosfichatecnica");
+
+            entity.HasIndex(e => e.RecepcionEquipoId, "fk_DatosFichaTecnica_RecepcionEquipo1_idx");
+
+            entity.Property(e => e.IdDatosFichaTecnica)
+                .HasColumnType("int(11)")
+                .HasColumnName("idDatosFichaTecnica");
+            entity.Property(e => e.AntivirusInstalado)
+                .HasMaxLength(100)
+                .HasColumnName("Antivirus Instalado");
+            entity.Property(e => e.FechaFinalizacion).HasColumnType("datetime");
+            entity.Property(e => e.FechaInicio).HasColumnType("datetime");
+            entity.Property(e => e.LectorPdfinstalado)
+                .HasComment("0:No Instalado ; 1: Instalado 2: No aplica")
+                .HasColumnType("int(11)")
+                .HasColumnName("LectorPDFInstalado");
+            entity.Property(e => e.NavegadorWebInstalado)
+                .HasComment("0:No instalado ; 1: Chrome ; 2: Firefox; 3: Chrome y Firefox")
+                .HasColumnType("int(11)");
+            entity.Property(e => e.PobservacionesRecomendaciones)
+                .HasMaxLength(2000)
+                .HasComment("Por el Tecnico")
+                .HasColumnName("PObservacionesRecomendaciones");
+            entity.Property(e => e.RecepcionEquipoId).HasColumnType("int(11)");
+            entity.Property(e => e.Soinstalado)
+                .HasComment("0:Windows 10 ; 1: Windows 11; 2: Linux")
+                .HasColumnType("int(11)")
+                .HasColumnName("SOInstalado");
+            entity.Property(e => e.SuiteOfficeInstalada)
+                .HasComment("0: Microsoft Office 2013 ; 1: Microsoft Office 2019 ; 2: Microsoft Office 365 ; 3: OpenOffice")
+                .HasColumnType("int(11)");
+
+            entity.HasOne(d => d.RecepcionEquipo).WithMany(p => p.Datosfichatecnicas)
+                .HasForeignKey(d => d.RecepcionEquipoId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_DatosFichaTecnica_RecepcionEquipo1");
         });
 
         modelBuilder.Entity<Descripcionservicio>(entity =>
@@ -77,6 +125,27 @@ public partial class MercydevsEjercicio2Context : DbContext
                 .HasConstraintName("fk_DescripcionServicio_Servicio1");
         });
 
+        modelBuilder.Entity<Diagnosticosolucion>(entity =>
+        {
+            entity.HasKey(e => e.IdDiagnosticoSolucion).HasName("PRIMARY");
+
+            entity.ToTable("diagnosticosolucion");
+
+            entity.HasIndex(e => e.DatosFichaTecnicaId, "fk_DiagnosticoSolucion_DatosFichaTecnica1_idx");
+
+            entity.Property(e => e.IdDiagnosticoSolucion)
+                .HasColumnType("int(11)")
+                .HasColumnName("idDiagnosticoSolucion");
+            entity.Property(e => e.DatosFichaTecnicaId).HasColumnType("int(11)");
+            entity.Property(e => e.DescripcionDiagnostico).HasMaxLength(1000);
+            entity.Property(e => e.DescripcionSolucion).HasMaxLength(1000);
+
+            entity.HasOne(d => d.DatosFichaTecnica).WithMany(p => p.Diagnosticosolucions)
+                .HasForeignKey(d => d.DatosFichaTecnicaId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_DiagnosticoSolucion_DatosFichaTecnica1");
+        });
+
         modelBuilder.Entity<Recepcionequipo>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -93,6 +162,7 @@ public partial class MercydevsEjercicio2Context : DbContext
             entity.Property(e => e.Accesorio).HasMaxLength(45);
             entity.Property(e => e.CapacidadAlmacenamiento).HasMaxLength(45);
             entity.Property(e => e.CapacidadRam).HasColumnType("int(11)");
+            entity.Property(e => e.Estado).HasColumnType("int(11)");
             entity.Property(e => e.Fecha).HasColumnType("datetime");
             entity.Property(e => e.Grafico).HasMaxLength(45);
             entity.Property(e => e.IdCliente).HasColumnType("int(11)");

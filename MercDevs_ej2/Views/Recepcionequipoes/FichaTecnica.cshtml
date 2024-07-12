@@ -1,161 +1,399 @@
-﻿@model MercDevs_ej2.Models.Recepcionequipo
-
-@{
-    ViewData["Title"] = "Ficha Técnica";
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        .body1 {
-            margin: 20px; 
-            background-color: #f0f0f0;
-            margin-botton:20px;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+  width: 100%;
+  margin: auto;
+  background-color: aliceblue;
+}
+.s{
+    margin-left: 65%;
+    
+}
+h1 {
+    text-align: center;
+    color: #070707;
+    animation: fadeIn 2s ease-in-out;
+   padding-top: 1%;
+   
+}
 
-        .container1 {
-            max-width: 600px; 
-            margin: 20px auto; 
-            padding: 20px; 
-            background-color: #161616;
-            border-radius: 20px; 
-            color: white;
-            box-shadow: 0 0 120px rgba(255, 56, 56, 0.5); 
-        }
+
+
+table {
+    width: 50%;
+    margin-left: 21%;
+    border-collapse: collapse;
+    animation: fadeIn 2s ease-in-out;
+}
+
+th, td {
+    border: 2px solid #070707;
+    padding: 10px;
+    text-align: left;
+}
+/*colores de fondo o texto de todos los th si quieres se los cambias */
+th {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.ob {
+    text-align: center;
+    background-color: #acacac;
 
     
+}
 
-        .table th, .table td {
-            padding: 8px; 
-            color: white; 
-        }
+.tbh {
+    background-color: #afafaf;
+    color: rgb(0, 0, 0);
+    text-align: center;
 
-    </style>
+}
+
+/*animaciones de transofrmaciones de deslizamiento*/
+
+
+/*pasar el cursor por encima lo podi cambiar si quieres o eliminar xd*/
+th:hover, td:hover {
+    background-color: #ff0808;
+    transition: background-color 0.3s ease;
+}
+</style>
 </head>
-<body class="body1">
-    <div class="container1">
-        <div class="text-right mb-4">
-            <strong>ID:</strong> @Model.Id <br />
-            <strong>Fecha: @Model.Fecha</strong> 
-        </div>
+<body>
 
-        <h1 class="text-center mb-4">@ViewData["Title"]</h1>
-
-        <div class="section">
-            <div class="section-title">Datos del Usuario</div>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th>Nombre</th>
-                        <td>@Model.IdClienteNavigation.Nombre</td>
-                        <th>Apellido</th>
-                        <td>@Model.IdClienteNavigation.Apellido</td>
-                    </tr>
-                    <tr>
-                        <th>Celular</th>
-                        <td>@Model.IdClienteNavigation.Telefono</td>
-                        <th>Correo</th>
-                        <td>@Model.IdClienteNavigation.Correo</td>
-                    </tr>
-                    <tr>
-                        <th>Dirección</th>
-                        <td colspan="3">@Model.IdClienteNavigation.Direccion</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Observación del Usuario</div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>N°</th>
-                        <th>Descripción</th>
-                        <th>Check</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<!--tabla de datos de usuario-->
+<table >
+    <h1>Ficha Tecnica</h1> 
+    <strong class="s">id:</strong> <br/>
+    <strong class="s">fecha:</strong>
+  <tr>
+    <th colspan="11" class="tbh">Datos de usuario</th>
+  </tr>
+  <tr>
+  <th colspan="2">Nombre:</th>
+  <th colspan="3">Apellido:</th>
+  <th colspan="6">Celular</th>
+  </tr>
+  <tr>
+    <th colspan="5">
+      Correo
+    </th>
+    <th colspan="6">Direccion:</th>
+  </tr>
 
 
-        <div class="section">
-            <h2>Datos del Hardware</h2>
-            <table class="table table-bordered">
-                <tbody>
+  <!--separacion tabla de datos usuarios - tabla observaciones del usuario -->
+<tr>
+  <th colspan="11"style="background-color:rgb(0, 0, 0);text-align:center"> 
+  <br>
+  <br>
+</th>
+</tr>
+<!-- separador del separador xd-->
 
-                    <tr>
-                        <th scope="row">Tipo</th>
+<tr>
+  <th colspan="11" class="tbh"> Observaciones Del usuario</th>
+</tr>
+  <th colspan="1" class="ob">N°</th>
+  <th colspan="6" >Descripcion</th>
+  <th colspan="4" >Check</th>
+</tr>
+<tr>
+  <th colspan="1"class="ob">1</th>
+  <th colspan="6" ></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">2</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">3</th>
+  <th colspan="6"><br></th>
+  <th colspan="4" style=""><br></th>
+</tr >
 
-                       
-                            @if(Model.TipoPc == 0)
-                            {
-                            <td>pc torre</td>
-                        }else if(Model.TipoPc == 1)
-                        {
-                           <td>notebook</td>
-                        }
-                        else if (Model.TipoPc == 2)
-                        {
-                            <td>All-in-One></td>
-                        }
+<!--separacion de tablas entre las de usuario y las de hardware-->
 
-                    </tr>
-                     <tr>
-                        <th scope="row">Accesorios</th>
-                        <td>@Model.Accesorio</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Marca</th>
-                        <td>@Model.MarcaPc</td>
-                        <th scope="row">Modelo</th>
-                        <td>@Model.ModeloPc</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">S/N</th>
-                        <td>@Model.Nserie</td>
-                        <th scope="row">CPU</th>
-                        <td>@Model.TipoGpu</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">RAM (GB)</th>
-                        <td>@Model.CapacidadRam</td>
-                       
-                        <th scope="row">Almacenamiento</th>
-                       <td>@Model.CapacidadAlmacenamiento</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Tipo GPU</th>
-                        <td>@Model.TipoGpu</td>
-                        <th scope="row">Tarjeta Gráfica</th>
-                        <td>@Model.Grafico</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-   
+<tr>
+            <th colspan="11" style="border-right-style:hidden; background-color:aliceblue; border: 2px solid #070707;">
+    <br>
+    <br>
+  </th>
+</tr>
+ <!--tabla de DATOS DE HARDWARE-->
+
+
+  <tr>
+    <th colspan="11" class="tbh">Datos del Hardware</th>
+  </tr>
+  <tr>
+    <th class="ob">Tipo</th>
+    <th colspan="3">Laptop | Torre | All-In-One</th>
+    <th>Accesorios</th>
+    <th>Cargador</th>
+    <th colspan="5">Bolso</th>
+  </tr>
+  <tr>
+    <th class="ob">Marca</th>
+    <th colspan="4">Modelo</th>
+    <th colspan="6">S/N</th>
+  </tr>
+  
+
+  <tr>
+    <th rowspan="4" class="ob">CPU</th>
+  </tr>
+  <tr>
+    
+    <th rowspan="3">Intel</th>
+    <th rowspan="3">AMD</th>
+    <th rowspan="2">Velocidad</th>
+    <th rowspan="3">RAM (GB)</th>
+    <th rowspan="3">4</th>
+    <th rowspan="3">8</th>
+    <th rowspan="3">16</th>
+    <th rowspan="3">12</th>
+    <th rowspan="3">16</th>
+    <th rowspan="3" >&nbsp; &nbsp; &nbsp;</th>
+  </tr>
+  <tr>
+    <tr>
+      <th><br></th>
+    </tr>
+  <tr>
+    <th rowspan="3" class="ob">Almacenamiento</th>
+    <th colspan="1" rowspan="2">HDD</th>
+    <th rowspan="2">SSD</th>
+    <th>Capacidad</th>
+    
+    <th rowspan="2">GPU</th>
+    <th rowspan="2">Tarjeta</th>
+    <th colspan="4" rowspan="2">Chip</th>
+    <th rowspan="2">&nbsp;&nbsp;&nbsp;</th>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+  </tr>
+</tr>
+<tr>
+  <tr>
+    <th colspan="4" rowspan="1" class="ob">P. Madre:</th>
+    <th colspan="8" style="background-color: white;"><br></th>
+  </tr>
+</tr>
+<!--separacion-->
+<tr>
+            <th colspan="11" style="border-right-style:hidden; background-color:aliceblue; border: 2px solid #070707;">
+    <br>
+    <br>
+  </th>
+</tr>
+<!--separacion-->
+<tr>
+  <th colspan="11" class="tbh">Datos Software inicial</th>
+</tr>
+  <th colspan="1" class="ob" >Sistema operativo</th>
+  <th colspan="4" >Windows:</th>
+  <th colspan="6" >Linux:</th>
+</tr>
+<tr>
+  <th colspan="1"class="ob" >Software instalado</th>
+  <th colspan="2" >M. Office:</th>
+  <th colspan="2"> Navegador</th>
+  <th colspan="3" >Lector PDF</th>
+  <th colspan="3">Compresor</th>
+</tr>
+<tr>
+  <th rowspan="1" class="ob">Inconvenientes:</th>
+  <th colspan="10"> 
+    <br>
+    <br>
+    <br>
+    <br>
+  </th>
+</tr>
+
+<!--separador de tablas magico :D-->
+<tr>
+  <th colspan="11" style="background-color:rgb(57, 57, 57);text-align:center">
+    <br>
+    <br>
+  </th>
+</tr>
+<!-- end of separador de tablas magico :D-->
+<tr>
+  <th colspan="11" class="tbh">Datos Software Final
+  </th>
+</tr>
+<tr>
+  <th colspan="2" class="ob">S.O instalado</th>
+  <th colspan="2" >Win 10</th>
+  <th colspan="2">Win 11</th>
+  <th colspan="7"> Linux:</th>
+</tr>
+<tr>
+  <th colspan="2" rowspan="5" class="ob">Herramientas de Oficina</th>
+  <th colspan="5" >Microsoft Office</th>
+  <th colspan="4" >Libre office</th>
+</tr>
+<tr >
+  <th colspan="2" >2013</th>
+  <th colspan="1" >2019</th>
+  <th colspan="2" >365</th>
+  <th colspan="2">24.+</th>
+  <th colspan="4">7.+</th>
+</tr>
+<tr>
+  <th colspan="3" >Adobe PDF</th>
+  <th colspan="2" >Nitro</th>
+  <th colspan="2">Winrar</th>
+  <th colspan="2"></th>
+</tr>
+<tr>
+  <th colspan="9" >Navegadores Web</th>
+</tr>
+<tr>
+  <th colspan="3" >Chrome</th>
+  <th colspan="2" >Firefox</th>
+  <th colspan="2">Opera</th>
+  <th colspan="2">Safari</th>
+</tr>
+<tr>
+  <th colspan="2"class="ob">Antivirus:</th>
+  <th colspan="9" style="background-color: white;"><br></th>
+</tr>
+<tr>
+  <!--separador  magico :D-->
+  <tr>
+    <th colspan="11" style="background-color:rgb(0, 0, 0);text-align:center">
+      <br>
+      <br>
+    </th>
+  </tr>
+  <!--final separador magico :D-->
+  <th colspan="11" class="tbh" > Diagnóstico</th>
+</tr>
+  <th colspan="1" >N°</th>
+  <th colspan="6" >Descripción</th>
+  <th colspan="4" >Tiempo</th>
+</tr>
+<tr>
+  <th colspan="1"class="ob">1</th>
+  <th colspan="6" ></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">2</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">3</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+  <!--separador  magico :D-->
+  <tr>
+    <th colspan="11" style="background-color:rgb(0, 0, 0);text-align:center">
+      <br>
+      <br>
+    </th>
+  </tr>
+  <!--final separador magico :D-->
+  <th colspan="11" class="tbh" > Diagnóstico</th>
+</tr>
+  <th colspan="1" class="ob">N°</th>
+  <th colspan="6" >Descripción</th>
+  <th colspan="4" >Tiempo</th>
+</tr>
+<tr>
+  <th colspan="1"class="ob">1</th>
+  <th colspan="6" ></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">2</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">3</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">4</th> 
+  <th colspan="6"></th>
+  <th colspan="5"></th>
+</tr>
+<!--separacion magica-->
+<tr>
+  <th colspan="11" style="background-color:rgb(0, 0, 0);text-align:center">
+    <br>
+    <br>
+  </th>
+</tr>
+<!--separacion magica-->
+<th colspan="11" class="tbh" > Soluciones y/o Intervenciones realizadas</th>
+</tr>
+  <th colspan="1" class="ob">N°</th>
+  <th colspan="6" >Descripción</th>
+  <th colspan="4" >Tiempo</th>
+</tr>
+<tr>
+  <th colspan="1"class="ob">1</th>
+  <th colspan="6" ></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">2</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">3</th>
+  <th colspan="6"><br></th>
+  <th colspan="4"><br></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">4</th> 
+  <th colspan="6"></th>
+  <th colspan="5"></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">5</th>
+  <th colspan="6"></th>
+  <th colspan="5"></th>
+</tr>
+<tr>
+  <th colspan="1" class="ob">6</th>
+  <th colspan="6"></th>
+  <th colspan="5"></th>
+</tr>
+<!--separacion magica-->
+<tr>
+  <th colspan="11" style="background-color:rgb(57, 57, 57);text-align:center">
+    <br>
+    <br>
+  </th>
+</tr>
+<!--separacion magica-->
+
+<tr>
+  <th colspan="11" class="tbh">Observaciones o Recomendaciones</th>
+</tr>
+<tr>
+<th colspan="11"><br><br><br><br><br><br><br><br><br><br><br></th>
+</tr>
+</table>
+
 </body>
 </html>
-    
