@@ -58,7 +58,14 @@ namespace MercDevs_ej2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdDatosFichaTecnica,FechaInicio,FechaFinalizacion,PobservacionesRecomendaciones,Soinstalado,SuiteOfficeInstalada,LectorPdfinstalado,NavegadorWebInstalado,AntivirusInstalado,RecepcionEquipoId")] Datosfichatecnica datosfichatecnica)
         {
-            if (ModelState.IsValid)
+            if (datosfichatecnica.FechaInicio != null &&
+                datosfichatecnica.FechaFinalizacion != null &&
+                datosfichatecnica.PobservacionesRecomendaciones != null &&
+                datosfichatecnica.Soinstalado != null &&
+                datosfichatecnica.SuiteOfficeInstalada != null &&
+                datosfichatecnica.LectorPdfinstalado != null &&
+                datosfichatecnica.NavegadorWebInstalado != null &&
+                datosfichatecnica.AntivirusInstalado != null)
             {
                 _context.Add(datosfichatecnica);
                 await _context.SaveChangesAsync();

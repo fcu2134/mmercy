@@ -1,58 +1,81 @@
-﻿@using System.Security.Claims;
+﻿@model IEnumerable<MercDevs_ej2.Models.Recepcionequipo>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recepción de Equipos en Proceso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       
 
-@{
-    ViewData["Title"] = "Página de Inicio";
-}
-<div class ="text-center">
-    <h1 class="display-4">Recepcion de equipos en proceso </h1>
-
-</div>
-
-@model List<Recepcionequipo> 
-
-<h2>Recepción de Equipos en Proceso</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre y Apellido del Cliente</th>
-            <th>Correo Electrónico del Cliente</th>
-            <th>Fecha Recepción de Equipo</th>
-            <th>Marca de PC</th>
-            <th>Modelo PC</th>
-            <th>Nombre del Servicio</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var equipo in Model)
-        {
-            <tr>
-                <td>@($"{equipo.IdClienteNavigation.Nombre} {equipo.IdClienteNavigation.Apellido}")</td>
-                <td>@equipo.IdClienteNavigation.Correo</td>
-                <td>@equipo.Fecha</td>
-                <td>@equipo.MarcaPc</td>
-                <td>@equipo.ModeloPc</td>
-                <td>@equipo.IdServicioNavigation.Nombre</td>
-                <td>
-                    <a asp-controller="Cliente" asp-action="Detalle" asp-route-id="@equipo.IdCliente">Detalle Cliente</a> |
-                    <a asp-controller="Servicio" asp-action="Detalle" asp-route-id="@equipo.IdServicio">Detalle Servicio</a> |
-                    <a asp-controller="RecepcionEquipo" asp-action="Detalle" asp-route-id="@equipo.Id">Ver Recepción Equipo</a>
-                </td>
-            </tr>
+        h1 {
+            text-align: center;
+            color: black;
+            margin-bottom: 40px;
+            padding: 20px;
+            font-family: 'Comic Sans MS';
         }
-    </tbody>
-</table>
-
-
-        
-
-
-
-
-
-
-};
-
-
+        h1:hover{
+            border-radius:30px;
+            color:white;
+            background-color:black;
+            box-shadow:0 0 120px rgb(90,1,0);
+        }
+        .boton{
+            color:black;
+        }
+        .boton:hover{
+           color:red;
+            border-radius:5%;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container mt-5" style="font-family: 'Comic Sans MS'">
+        <h1 class="display-4">Recepción de Equipos en Proceso</h1>
+        <table class="table table-bordered table-striped" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre y Apellido del Cliente</th>
+                    <th>Correo Electrónico del Cliente</th>
+                    <th>Fecha Recepción de Equipo</th>
+                    <th>Marca de PC</th>
+                    <th>Modelo PC</th>
+                    <th>Nombre del Servicio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="highlight-row">
+                        <td>
+                            <a asp-action="details" asp-route-id="@item.Id" asp-controller="clientes" class="boton">
+                                @item.IdClienteNavigation.Nombre @item.IdClienteNavigation.Apellido
+                            </a>
+                        </td>
+                        <td>@item.IdClienteNavigation.Correo</td>
+                        <td>@item.Fecha?.ToString("dd/MM/yyyy")</td>
+                        <td>@item.MarcaPc</td>
+                        <td>@item.ModeloPc</td>
+                        <td>
+                            <a asp-action="details" asp-route-id="@item.Id" asp-controller="servicios" class="boton">
+                                @item.IdServicioNavigation.Nombre
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-action="index" asp-route-id="@item.Id" asp-controller="recepcionequipoes" class="boton">
+                                Ver Recepción Equipo
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

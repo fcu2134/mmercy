@@ -25,13 +25,13 @@ namespace MercDevs_ej2.Controllers
 
         public IActionResult Index()
         {
-            var equiposEnProceso = _context.Recepcionequipos
+            var Recepcionequipo = _context.Recepcionequipos
                 .Include(r => r.IdClienteNavigation)
                 .Include(r => r.IdServicioNavigation)
                 .Where(r => r.Estado == 1)
                 .ToList();
 
-            return View(); // Pasar la lista de equipos en proceso a la vista
+            return View(Recepcionequipo); // Pasar la lista de equipos en proceso a la vista
         }
 
 

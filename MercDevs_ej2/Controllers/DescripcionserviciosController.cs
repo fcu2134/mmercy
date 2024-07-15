@@ -58,7 +58,7 @@ namespace MercDevs_ej2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdDescServ,Nombre,ServicioIdServicio")] Descripcionservicio descripcionservicio)
         {
-            if (ModelState.IsValid)
+            if (descripcionservicio.IdDescServ != 0 && descripcionservicio.Nombre !=null && descripcionservicio.ServicioIdServicio !=0)
             {
                 _context.Add(descripcionservicio);
                 await _context.SaveChangesAsync();
